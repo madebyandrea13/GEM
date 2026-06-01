@@ -957,10 +957,13 @@
   <!-- PROMO POPUP — Play Festival -->
   <div id="promo-popup" style="
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
     z-index: 999;
-    width: 320px;
+    width: auto;
+    max-width: 320px;
+    margin-left: auto;
     background: #1C1510;
     border-radius: 6px;
     overflow: hidden;
@@ -993,6 +996,9 @@
   </div>
 
   <script>
+    window.onbeforeunload = function() { window.scrollTo(0, 0); };
+    window.addEventListener('load', function() { window.scrollTo(0, 0); });
+
     (function() {
       var popup = document.getElementById('promo-popup');
       var closeBtn = document.getElementById('promo-close');
