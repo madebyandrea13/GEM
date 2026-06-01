@@ -954,5 +954,61 @@
     </div>
   </footer>
 
+  <!-- PROMO POPUP — Play Festival -->
+  <div id="promo-popup" style="
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    width: 320px;
+    background: #1C1510;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 0.5px solid rgba(200,151,90,0.35);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+    transform: translateX(380px);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.55s ease;
+    font-family: 'Jost', sans-serif;
+  ">
+    <!-- Header immagine Play -->
+    <div style="position:relative; height:90px; overflow:hidden;">
+      <img src="./play-logo.png" style="width:100%; height:100%; object-fit:cover; object-position:center 30%; opacity:0.55; display:block;">
+      <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(28,21,16,0.2) 0%, rgba(28,21,16,0.85) 100%);"></div>
+      <button id="promo-close" style="position:absolute; top:0.75rem; right:0.75rem; background:rgba(0,0,0,0.4); border:0.5px solid rgba(200,151,90,0.3); cursor:pointer; color:rgba(200,151,90,0.7); font-size:14px; line-height:1; padding:4px 7px; border-radius:3px; font-family:sans-serif;">✕</button>
+      <div style="position:absolute; bottom:0.75rem; left:1.25rem;">
+        <span style="font-size:10px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:#C8975A;">Offerta esclusiva</span>
+      </div>
+    </div>
+    <!-- Body -->
+    <div style="padding:1.25rem 1.5rem 1.5rem;">
+      <div style="display:flex; align-items:flex-end; gap:0.75rem; margin-bottom:1rem;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:700; color:#F4EDE3; margin:0; line-height:1;">−10%</p>
+        <p style="font-size:12px; color:#C8975A; margin:0 0 6px; letter-spacing:0.04em; line-height:1.4;">sul tuo<br>primo ordine</p>
+      </div>
+      <div style="height:0.5px; background:rgba(200,151,90,0.2); margin-bottom:1rem;"></div>
+      <p style="font-size:13px; font-weight:300; color:#a08060; line-height:1.65; margin:0 0 1.25rem;">Ci siamo incontrati al Play? La promo legata al Festival del Gioco è ancora attiva per un po'.</p>
+      <a href="mailto:info@gem-gaming.com?subject=Sconto Play Festival" style="display:block; text-align:center; background:#C8975A; color:#1C1510; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; padding:13px; border-radius:3px; text-decoration:none;">Richiedi lo sconto →</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var popup = document.getElementById('promo-popup');
+      var closeBtn = document.getElementById('promo-close');
+      if (localStorage.getItem('gem-promo-closed')) return;
+      setTimeout(function() {
+        popup.style.transform = 'translateX(0)';
+        popup.style.opacity = '1';
+      }, 2000);
+      closeBtn.addEventListener('click', function() {
+        popup.style.transform = 'translateX(380px)';
+        popup.style.opacity = '0';
+        setTimeout(function() { popup.style.display = 'none'; }, 600);
+        localStorage.setItem('gem-promo-closed', '1');
+      });
+    })();
+  </script>
+
 </body>
 </html>
